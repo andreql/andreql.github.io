@@ -1,0 +1,2439 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <style>
+body {
+  background-color: lightgreen;
+/*  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Bandeira_de_Mato_Grosso_do_Sul.svg/210px-Bandeira_de_Mato_Grosso_do_Sul.svg.png');*/
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Flag_map_of_Mato_Grosso_do_Sul.png/920px-Flag_map_of_Mato_Grosso_do_Sul.png');
+  background-repeat: repeat;
+  font-family: sans-serif;
+}
+
+h2 {
+  color: black;
+}
+
+select, option {
+  width: 250px;
+}
+
+select {
+  margin-right: 10px;
+}
+
+button {
+  margin-right: 5px;
+}
+
+label {
+  display: inline-block;
+  padding-left: 5px;
+  padding-bottom: 10px;
+  width: 350px;
+}
+
+p {
+  background-color: lightblue;
+  width: 770px;
+  border: 1px solid black;
+  padding-top: 10px;
+}
+    </style>
+  </head>
+  <body>
+    <span><button id="reset">RESET</button></span>
+    <h2>Remoção</h2>
+    <div id="remframe">
+    </div>
+    <h2>PcD</h2>
+    <div id="pcdframe">
+    </div>
+    <h2>Provimento</h2>
+    <div id="provframe">
+    </div>
+    <script> <!-- aprovados por critério -->
+      const remlist = [
+        {
+          "nome": "Guilherme Vieira Gomes Neto",
+          "cl": 1
+        },
+        {
+          "nome": "Maria Aparecida Carvalho Iunes",
+          "cl": 2
+        },
+        {
+          "nome": "Letícia Pelissari Molina Maciel",
+          "cl": 3
+        },
+        {
+          "nome": "Frank Willy Rondina",
+          "cl": 4
+        },
+        {
+          "nome": "Gil Messias Fleming",
+          "cl": 5
+        },
+        {
+          "nome": "Leonardo Couto Giffoni Dos Santos",
+          "cl": 6
+        },
+        {
+          "nome": "Adelson Luiz Correia",
+          "cl": 7
+        },
+        {
+          "nome": "Rene Weiber Dos Santos",
+          "cl": 8
+        },
+        {
+          "nome": "Naymi Salles Fernandes Silva Torres",
+          "cl": 9
+        },
+        {
+          "nome": "Karina Viegas Brunialti",
+          "cl": 10
+        },
+        {
+          "nome": "Luis Alberto Degani de Oliveira",
+          "cl": 11
+        },
+        {
+          "nome": "Gizelli Karol Both Palermo Boin",
+          "cl": 12
+        },
+        {
+          "nome": "Marcelo José Scariot",
+          "cl": 13
+        },
+        {
+          "nome": "Bruno Soares Daniel",
+          "cl": 14
+        },
+        {
+          "nome": "Sandra Maria Barcelos",
+          "cl": 15
+        },
+        {
+          "nome": "Priscila Papasidero",
+          "cl": 16
+        }
+      ];
+
+      const pcdlist = [
+        {
+          "nome": "Mariele Michalowski Cosechen Canestraro",
+          "cl": 1
+        },
+        {
+          "nome": "Pamela Giuliana Prado De Barros",
+          "cl": 2
+        }
+      ];
+
+      const provlist = [
+        {
+          "nome": "Cláudia Maria Resende Neves Guimarães",
+          "cl": 1
+        },
+        {
+          "nome": "Fabio Seabra De Oliveira",
+          "cl": 2
+        },
+        {
+          "nome": "Camila Candido Emerim",
+          "cl": 3
+        },
+        {
+          "nome": "Alinne Cardoso Da Silva",
+          "cl": 4
+        },
+        {
+          "nome": "André Rodrigo Gimenez Cabrera",
+          "cl": 5
+        },
+        {
+          "nome": "Pricila Gregolin Gugik",
+          "cl": 6
+        },
+        {
+          "nome": "Fábia Sousa Presser",
+          "cl": 7
+        },
+        {
+          "nome": "Marcus Resende Neves Guimarães",
+          "cl": 8
+        },
+        {
+          "nome": "Rodrigo Paulucci Santos",
+          "cl": 9
+        },
+        {
+          "nome": "Guilherme Delfino Gueiral",
+          "cl": 10
+        },
+        {
+          "nome": "Lucas Shigueru Fujiike",
+          "cl": 11
+        },
+        {
+          "nome": "Guilherme Vieira Gomes Neto",
+          "cl": 12
+        },
+        {
+          "nome": "Carolina Parducci Brandão",
+          "cl": 13
+        },
+        {
+          "nome": "Marcos Nassar",
+          "cl": 14
+        },
+        {
+          "nome": "Isabela Tavares Schnaider",
+          "cl": 15
+        },
+        {
+          "nome": "Mariana Souza Magalhaes",
+          "cl": 16
+        },
+        {
+          "nome": "Welington Batista Lourenço",
+          "cl": 17
+        },
+        {
+          "nome": "Marcio Flavio Mafra Leal",
+          "cl": 18
+        },
+        {
+          "nome": "Marcos Vinicius Pacheco Aguiar",
+          "cl": 19
+        },
+        {
+          "nome": "Rhana De Almeida Born",
+          "cl": 20
+        },
+        {
+          "nome": "Gustavo José Werneck",
+          "cl": 21
+        },
+        {
+          "nome": "Gilmar Da Silva Francelino",
+          "cl": 22
+        },
+        {
+          "nome": "Pedro Augusto De Souza Brambilla",
+          "cl": 23
+        },
+        {
+          "nome": "Mathias Foletto Silva",
+          "cl": 24
+        },
+        {
+          "nome": "Dimitri Fernandes",
+          "cl": 25
+        },
+        {
+          "nome": "Rafael José De Moraes",
+          "cl": 26
+        },
+        {
+          "nome": "Beatriz Luiza Goedert De Campos",
+          "cl": 27
+        },
+        {
+          "nome": "Laura Regina Echeverria Da Silva",
+          "cl": 28
+        },
+        {
+          "nome": "Soraya Pina Bastos",
+          "cl": 29
+        },
+        {
+          "nome": "Isadora Moraes Diniz",
+          "cl": 30
+        },
+        {
+          "nome": "João Carneiro Duarte Neto",
+          "cl": 31
+        },
+        {
+          "nome": "Luiza Oliveira Guedes",
+          "cl": 32
+        },
+        {
+          "nome": "Cristiano Feitosa Mendes",
+          "cl": 33
+        },
+        {
+          "nome": "Águida Caroline Martins Silva",
+          "cl": 34
+        },
+        {
+          "nome": "Gil Messias Fleming",
+          "cl": 35
+        },
+        {
+          "nome": "Johannes Miranda Meira",
+          "cl": 36
+        },
+        {
+          "nome": "Stela Stafin",
+          "cl": 37
+        },
+        {
+          "nome": "Geovanny Matsumoto De Almeida Santos",
+          "cl": 38
+        },
+        {
+          "nome": "Joao Paulo Vasconcelos De Moraes",
+          "cl": 39
+        },
+        {
+          "nome": "Frank Willy Rondina",
+          "cl": 40
+        },
+        {
+          "nome": "Bruno Ribeiro Guedes",
+          "cl": 41
+        },
+        {
+          "nome": "Emanuella Bronzim Amaducci",
+          "cl": 42
+        },
+        {
+          "nome": "Gabriella Schmitz Kremer",
+          "cl": 43
+        },
+        {
+          "nome": "João Paulo Martins Magalhães",
+          "cl": 44
+        },
+        {
+          "nome": "André Queiroz Lacerda E Silva",
+          "cl": 45
+        }
+      ];
+    </script>
+    <script> <!-- cartórios por critério -->
+  const remav = [
+    {
+      "ID": "54-Três Lagoas-Sede-SERVIÇO DE REGISTRO DE IMÓVEIS DA 2ª CIRCUNSCRIÇÃO",
+      "NO": 54,
+      "Comarca": "Três Lagoas",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO DE REGISTRO DE IMÓVEIS DA 2ª CIRCUNSCRIÇÃO",
+      "Cr.": "R",
+      "#F.": 14,
+      "Hab.": 132.152,
+      "CGR": 3,
+      "Bruto": "R$ 333.333,33",
+      "Liq": "R$ 200.000,00"
+    },
+    {
+      "ID": "48-Rio Brilhante-Sede-SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 48,
+      "Comarca": "Rio Brilhante",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "R",
+      "#F.": 11,
+      "Hab.": 37.601,
+      "CGR": "2,5",
+      "Bruto": "R$ 204.249,56",
+      "Liq": "R$ 122.549,74"
+    },
+    {
+      "ID": "39-Ponta Porã-Sede-3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+      "NO": 39,
+      "Comarca": "Ponta Porã",
+      "Distrito": "Sede",
+      "Denom": "3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+      "Cr.": "R",
+      "#F.": 9,
+      "Hab.": 92.017,
+      "CGR": "4,5",
+      "Bruto": "R$ 167.553,18",
+      "Liq": "R$ 100.531,91"
+    },
+    {
+      "ID": "42-Dourados-Sede-3º SERVIÇO NOTARIAL",
+      "NO": 42,
+      "Comarca": "Dourados",
+      "Distrito": "Sede",
+      "Denom": "3º SERVIÇO NOTARIAL",
+      "Cr.": "R",
+      "#F.": 13,
+      "Hab.": 243.368,
+      "CGR": "3,5",
+      "Bruto": "R$ 133.361,91",
+      "Liq": "R$ 80.017,15"
+    },
+    {
+      "ID": "21-Bataguassu-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "NO": 21,
+      "Comarca": "Bataguassu",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "Cr.": "R",
+      "#F.": 7,
+      "Hab.": 23.031,
+      "CGR": "4,5",
+      "Bruto": "R$ 78.864,56",
+      "Liq": "R$ 47.318,74"
+    },
+    {
+      "ID": "9-Corumbá-Sede-3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+      "NO": 9,
+      "Comarca": "Corumbá",
+      "Distrito": "Sede",
+      "Denom": "3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+      "Cr.": "R",
+      "#F.": 3,
+      "Hab.": 96.268,
+      "CGR": "5,5",
+      "Bruto": "R$ 74.401,83",
+      "Liq": "R$ 44.641,10"
+    },
+    {
+      "ID": "12-Porto Murtinho-Sede-SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 12,
+      "Comarca": "Porto Murtinho",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "R",
+      "#F.": 3,
+      "Hab.": 12.859,
+      "CGR": 6,
+      "Bruto": "R$ 71.707,47",
+      "Liq": "R$ 43.024,48"
+    },
+    {
+      "ID": "45-Corumbá-Sede-2° SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 45,
+      "Comarca": "Corumbá",
+      "Distrito": "Sede",
+      "Denom": "2° SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "R",
+      "#F.": 5,
+      "Hab.": 96.268,
+      "CGR": "5,5",
+      "Bruto": "R$ 71.141,92",
+      "Liq": "R$ 42.685,15"
+    },
+    {
+      "ID": "51-Jardim-Guia Lopes da Laguna-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "NO": 51,
+      "Comarca": "Jardim",
+      "Distrito": "Guia Lopes da Laguna",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "Cr.": "R",
+      "#F.": 3,
+      "Hab.": 9.939,
+      "CGR": 3,
+      "Bruto": "R$ 50.562,48",
+      "Liq": "R$ 30.337,49"
+    },
+    {
+      "ID": "60-Mundo Novo-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "NO": 60,
+      "Comarca": "Mundo Novo",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "Cr.": "R",
+      "#F.": 4,
+      "Hab.": 19.193,
+      "CGR": 7,
+      "Bruto": "R$ 45.201,99",
+      "Liq": "R$ 27.121,19"
+    },
+    {
+      "ID": "30-Coxim-Alcinópolis-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "NO": 30,
+      "Comarca": "Coxim",
+      "Distrito": "Alcinópolis",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "Cr.": "R",
+      "#F.": 2,
+      "Hab.": 4.537,
+      "CGR": "4,5",
+      "Bruto": "R$ 39.611,18",
+      "Liq": "R$ 23.766,71"
+    },
+    {
+      "ID": "15-Sonora-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "NO": 15,
+      "Comarca": "Sonora",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "Cr.": "R",
+      "#F.": 3,
+      "Hab.": 14.516,
+      "CGR": "5,5",
+      "Bruto": "R$ 29.008,51",
+      "Liq": "R$ 17.405,11"
+    },
+    {
+      "ID": "57-Nioaque-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "NO": 57,
+      "Comarca": "Nioaque",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "Cr.": "R",
+      "#F.": 3,
+      "Hab.": 13.22,
+      "CGR": "2,5",
+      "Bruto": "R$ 28.475,13",
+      "Liq": "R$ 17.085,08"
+    },
+    {
+      "ID": "36-Fátima do Sul-Sede-3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+      "NO": 36,
+      "Comarca": "Fátima do Sul",
+      "Distrito": "Sede",
+      "Denom": "3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+      "Cr.": "R",
+      "#F.": 3,
+      "Hab.": 20.609,
+      "CGR": "3,5",
+      "Bruto": "R$ 28.028,79",
+      "Liq": "R$ 16.817,27"
+    },
+    {
+      "ID": "27-Rio Verde de Mato Grosso-Sede-2º SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 27,
+      "Comarca": "Rio Verde de Mato Grosso",
+      "Distrito": "Sede",
+      "Denom": "2º SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "R",
+      "#F.": 2,
+      "Hab.": 19.818,
+      "CGR": "2,5",
+      "Bruto": "R$ 27.587,08",
+      "Liq": "R$ 16.552,25"
+    },
+    {
+      "ID": "18-Iguatemi-Sede-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 18,
+      "Comarca": "Iguatemi",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "R",
+      "#F.": 3,
+      "Hab.": 13.796,
+      "CGR": 6,
+      "Bruto": "R$ 27.291,97",
+      "Liq": "R$ 16.375,18"
+    },
+    {
+      "ID": "33-Miranda-Bodoquena-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "NO": 33,
+      "Comarca": "Miranda",
+      "Distrito": "Bodoquena",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "Cr.": "R",
+      "#F.": 2,
+      "Hab.": 8.567,
+      "CGR": 4,
+      "Bruto": "R$ 26.941,97",
+      "Liq": "R$ 16.165,18"
+    },
+    {
+      "ID": "24-Anaurilândia-Quebracho-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "NO": 24,
+      "Comarca": "Anaurilândia",
+      "Distrito": "Quebracho",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "Cr.": "R",
+      "#F.": 0,
+      "Hab.": 4,
+      "CGR": "5,5",
+      "Bruto": "R$ 19.473,56",
+      "Liq": "R$ 11.684,14"
+    },
+    {
+      "ID": "3-Batayporã-Taquarussu-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "NO": 3,
+      "Comarca": "Batayporã",
+      "Distrito": "Taquarussu",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "Cr.": "R",
+      "#F.": 1,
+      "Hab.": 3.625,
+      "CGR": 5,
+      "Bruto": "R$ 14.679,94",
+      "Liq": "R$ 8.807,96"
+    },
+    {
+      "ID": "6-Fátima do Sul-Culturama-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "NO": 6,
+      "Comarca": "Fátima do Sul",
+      "Distrito": "Culturama",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "Cr.": "R",
+      "#F.": 2,
+      "Hab.": 4,
+      "CGR": 4,
+      "Bruto": "R$ 7.579,00",
+      "Liq": "R$ 4.547,40"
+    }
+  ];
+
+  const pcdav = [
+    {
+      "ID": "35-Anastácio-Sede-SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 35,
+      "Comarca": "Anastácio",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "P",
+      "#F.": 4,
+      "Hab.": 24.107,
+      "CGR": 2,
+      "Bruto": "R$ 102.859,04",
+      "Liq": "R$ 61.715,42"
+    },
+    {
+      "ID": "34-Cassilândia-Sede-2° SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 34,
+      "Comarca": "Cassilândia",
+      "Distrito": "Sede",
+      "Denom": "2° SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "P",
+      "#F.": 2,
+      "Hab.": 20.988,
+      "CGR": 6,
+      "Bruto": "R$ 13.617,68",
+      "Liq": "R$ 8.170,61"
+    }
+  ];
+
+  const provav = [
+    {
+      "ID": "44-Dourados-Sede-SERVIÇO DE REGISTRO DE IMÓVEIS DA 1ª CIRCUNSCRIÇÃO",
+      "NO": 44,
+      "Comarca": "Dourados",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO DE REGISTRO DE IMÓVEIS DA 1ª CIRCUNSCRIÇÃO",
+      "Cr.": "P",
+      "#F.": 33,
+      "Hab.": 243.368,
+      "CGR": "3,5",
+      "Bruto": "R$ 750.000,00",
+      "Liq": "R$ 450.000,00"
+    },
+    {
+      "ID": "20-Maracaju-Sede-SERVIÇO DE REGISTRO DE IMÓVEIS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 20,
+      "Comarca": "Maracaju",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO DE REGISTRO DE IMÓVEIS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "P",
+      "#F.": 12,
+      "Hab.": 45.047,
+      "CGR": "2,5",
+      "Bruto": "R$ 431.233,22",
+      "Liq": "R$ 258.739,93"
+    },
+    {
+      "ID": "54-Três Lagoas-Sede-SERVIÇO DE REGISTRO DE IMÓVEIS DA 2ª CIRCUNSCRIÇÃO",
+      "NO": 54,
+      "Comarca": "Três Lagoas",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO DE REGISTRO DE IMÓVEIS DA 2ª CIRCUNSCRIÇÃO",
+      "Cr.": "R",
+      "#F.": 14,
+      "Hab.": 132.152,
+      "CGR": 3,
+      "Bruto": "R$ 333.333,33",
+      "Liq": "R$ 200.000,00"
+    },
+    {
+      "ID": "50-Nova Andradina-Sede-SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 50,
+      "Comarca": "Nova Andradina",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "P",
+      "#F.": 14,
+      "Hab.": 48.563,
+      "CGR": "4,5",
+      "Bruto": "R$ 288.807,87",
+      "Liq": "R$ 173.284,72"
+    },
+    {
+      "ID": "14-Campo Grande-Sede-3º TABELIONATO DE PROTESTO DE TÍTULOS",
+      "NO": 14,
+      "Comarca": "Campo Grande",
+      "Distrito": "Sede",
+      "Denom": "3º TABELIONATO DE PROTESTO DE TÍTULOS",
+      "Cr.": "P",
+      "#F.": 9,
+      "Hab.": 897.938,
+      "CGR": 0,
+      "Bruto": "R$ 272.145,77",
+      "Liq": "R$ 163.287,46"
+    },
+    {
+      "ID": "48-Rio Brilhante-Sede-SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 48,
+      "Comarca": "Rio Brilhante",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "R",
+      "#F.": 11,
+      "Hab.": 37.601,
+      "CGR": "2,5",
+      "Bruto": "R$ 204.249,56",
+      "Liq": "R$ 122.549,74"
+    },
+    {
+      "ID": "32-Campo Grande-Sede-4º SERVIÇO NOTARIAL E DE REGISTRO DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS",
+      "NO": 32,
+      "Comarca": "Campo Grande",
+      "Distrito": "Sede",
+      "Denom": "4º SERVIÇO NOTARIAL E DE REGISTRO DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS",
+      "Cr.": "P",
+      "#F.": 20,
+      "Hab.": 897.938,
+      "CGR": 0,
+      "Bruto": "R$ 178.873,31",
+      "Liq": "R$ 107.323,99"
+    },
+    {
+      "ID": "39-Ponta Porã-Sede-3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+      "NO": 39,
+      "Comarca": "Ponta Porã",
+      "Distrito": "Sede",
+      "Denom": "3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+      "Cr.": "R",
+      "#F.": 9,
+      "Hab.": 92.017,
+      "CGR": "4,5",
+      "Bruto": "R$ 167.553,18",
+      "Liq": "R$ 100.531,91"
+    },
+    {
+      "ID": "40-Campo Grande-Sede-6º SERVIÇO NOTARIAL",
+      "NO": 40,
+      "Comarca": "Campo Grande",
+      "Distrito": "Sede",
+      "Denom": "6º SERVIÇO NOTARIAL",
+      "Cr.": "P",
+      "#F.": 17,
+      "Hab.": 897.938,
+      "CGR": 0,
+      "Bruto": "R$ 145.814,53",
+      "Liq": "R$ 87.488,72"
+    },
+    {
+      "ID": "42-Dourados-Sede-3º SERVIÇO NOTARIAL",
+      "NO": 42,
+      "Comarca": "Dourados",
+      "Distrito": "Sede",
+      "Denom": "3º SERVIÇO NOTARIAL",
+      "Cr.": "R",
+      "#F.": 13,
+      "Hab.": 243.368,
+      "CGR": "3,5",
+      "Bruto": "R$ 133.361,91",
+      "Liq": "R$ 80.017,15"
+    },
+    {
+      "ID": "29-Amambai-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS",
+      "NO": 29,
+      "Comarca": "Amambai",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS",
+      "Cr.": "P",
+      "#F.": 10,
+      "Hab.": 39.325,
+      "CGR": "5,5",
+      "Bruto": "R$ 129.738,85",
+      "Liq": "R$ 77.843,31"
+    },
+    {
+      "ID": "11-Três Lagoas-Sede-2º SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 11,
+      "Comarca": "Três Lagoas",
+      "Distrito": "Sede",
+      "Denom": "2º SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "P",
+      "#F.": 11,
+      "Hab.": 132.152,
+      "CGR": 5,
+      "Bruto": "R$ 106.033,88",
+      "Liq": "R$ 63.620,33"
+    },
+    {
+      "ID": "35-Anastácio-Sede-SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 35,
+      "Comarca": "Anastácio",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "P",
+      "#F.": 4,
+      "Hab.": 24.107,
+      "CGR": 2,
+      "Bruto": "R$ 102.859,04",
+      "Liq": "R$ 61.715,42"
+    },
+    {
+      "ID": "59-Deodápolis-Sede-SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 59,
+      "Comarca": "Deodápolis",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "P",
+      "#F.": 2,
+      "Hab.": 13.663,
+      "CGR": 4,
+      "Bruto": "R$ 91.240,93",
+      "Liq": "R$ 54.744,56"
+    },
+    {
+      "ID": "38-Naviraí-Sede-2º SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 38,
+      "Comarca": "Naviraí",
+      "Distrito": "Sede",
+      "Denom": "2º SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "P",
+      "#F.": 10,
+      "Hab.": 50.457,
+      "CGR": "5,5",
+      "Bruto": "R$ 87.378,56",
+      "Liq": "R$ 52.427,14"
+    },
+    {
+      "ID": "21-Bataguassu-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "NO": 21,
+      "Comarca": "Bataguassu",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "Cr.": "R",
+      "#F.": 7,
+      "Hab.": 23.031,
+      "CGR": "4,5",
+      "Bruto": "R$ 78.864,56",
+      "Liq": "R$ 47.318,74"
+    },
+    {
+      "ID": "28-Anastácio-Sede-SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE",
+      "NO": 28,
+      "Comarca": "Anastácio",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE",
+      "Cr.": "P",
+      "#F.": 3,
+      "Hab.": 24.107,
+      "CGR": 2,
+      "Bruto": "R$ 78.805,22",
+      "Liq": "R$ 47.283,13"
+    },
+    {
+      "ID": "31-Aquidauana-Sede-4º SERVIÇO NOTARIAL E DE REGISTRO DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS",
+      "NO": 31,
+      "Comarca": "Aquidauana",
+      "Distrito": "Sede",
+      "Denom": "4º SERVIÇO NOTARIAL E DE REGISTRO DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS",
+      "Cr.": "P",
+      "#F.": 4,
+      "Hab.": 46.803,
+      "CGR": 2,
+      "Bruto": "R$ 78.352,01",
+      "Liq": "R$ 47.011,21"
+    },
+    {
+      "ID": "37-Bonito-Sede-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 37,
+      "Comarca": "Bonito",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "P",
+      "#F.": 4,
+      "Hab.": 23.659,
+      "CGR": 4,
+      "Bruto": "R$ 78.000,15",
+      "Liq": "R$ 46.800,09"
+    },
+    {
+      "ID": "9-Corumbá-Sede-3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+      "NO": 9,
+      "Comarca": "Corumbá",
+      "Distrito": "Sede",
+      "Denom": "3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+      "Cr.": "R",
+      "#F.": 3,
+      "Hab.": 96.268,
+      "CGR": "5,5",
+      "Bruto": "R$ 74.401,83",
+      "Liq": "R$ 44.641,10"
+    },
+    {
+      "ID": "26-Aparecida do Taboado-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "NO": 26,
+      "Comarca": "Aparecida do Taboado",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "Cr.": "P",
+      "#F.": 6,
+      "Hab.": 27.674,
+      "CGR": "6,5",
+      "Bruto": "R$ 73.884,16",
+      "Liq": "R$ 44.330,50"
+    },
+    {
+      "ID": "12-Porto Murtinho-Sede-SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 12,
+      "Comarca": "Porto Murtinho",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "R",
+      "#F.": 3,
+      "Hab.": 12.859,
+      "CGR": 6,
+      "Bruto": "R$ 71.707,47",
+      "Liq": "R$ 43.024,48"
+    },
+    {
+      "ID": "45-Corumbá-Sede-2° SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 45,
+      "Comarca": "Corumbá",
+      "Distrito": "Sede",
+      "Denom": "2° SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "R",
+      "#F.": 5,
+      "Hab.": 96.268,
+      "CGR": "5,5",
+      "Bruto": "R$ 71.141,92",
+      "Liq": "R$ 42.685,15"
+    },
+    {
+      "ID": "46-Água Clara-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "NO": 46,
+      "Comarca": "Água Clara",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "Cr.": "P",
+      "#F.": 3,
+      "Hab.": 16.741,
+      "CGR": 3,
+      "Bruto": "R$ 67.041,22",
+      "Liq": "R$ 40.224,73"
+    },
+    {
+      "ID": "47-Corumbá-Sede-4º SERVIÇO NOTARIAL E DE REGISTRO DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS",
+      "NO": 47,
+      "Comarca": "Corumbá",
+      "Distrito": "Sede",
+      "Denom": "4º SERVIÇO NOTARIAL E DE REGISTRO DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS",
+      "Cr.": "P",
+      "#F.": 4,
+      "Hab.": 96.268,
+      "CGR": "5,5",
+      "Bruto": "R$ 64.456,26",
+      "Liq": "R$ 38.673,76"
+    },
+    {
+      "ID": "16-Inocência-Sede-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 16,
+      "Comarca": "Inocência",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "P",
+      "#F.": 1,
+      "Hab.": 8.404,
+      "CGR": 5,
+      "Bruto": "R$ 51.685,22",
+      "Liq": "R$ 31.011,13"
+    },
+    {
+      "ID": "51-Jardim-Guia Lopes da Laguna-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "NO": 51,
+      "Comarca": "Jardim",
+      "Distrito": "Guia Lopes da Laguna",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "Cr.": "R",
+      "#F.": 3,
+      "Hab.": 9.939,
+      "CGR": 3,
+      "Bruto": "R$ 50.562,48",
+      "Liq": "R$ 30.337,49"
+    },
+    {
+      "ID": "52-Paranaíba-Sede-3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+      "NO": 52,
+      "Comarca": "Paranaíba",
+      "Distrito": "Sede",
+      "Denom": "3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+      "Cr.": "P",
+      "#F.": 2,
+      "Hab.": 40.957,
+      "CGR": 6,
+      "Bruto": "R$ 46.894,82",
+      "Liq": "R$ 28.136,89"
+    },
+    {
+      "ID": "60-Mundo Novo-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "NO": 60,
+      "Comarca": "Mundo Novo",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "Cr.": "R",
+      "#F.": 4,
+      "Hab.": 19.193,
+      "CGR": 7,
+      "Bruto": "R$ 45.201,99",
+      "Liq": "R$ 27.121,19"
+    },
+    {
+      "ID": "17-Angélica-Sede-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 17,
+      "Comarca": "Angélica",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "P",
+      "#F.": 3,
+      "Hab.": 10.729,
+      "CGR": 4,
+      "Bruto": "R$ 41.848,55",
+      "Liq": "R$ 25.109,13"
+    },
+    {
+      "ID": "30-Coxim-Alcinópolis-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "NO": 30,
+      "Comarca": "Coxim",
+      "Distrito": "Alcinópolis",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "Cr.": "R",
+      "#F.": 2,
+      "Hab.": 4.537,
+      "CGR": "4,5",
+      "Bruto": "R$ 39.611,18",
+      "Liq": "R$ 23.766,71"
+    },
+    {
+      "ID": "13-Dourados-Itahum-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "NO": 13,
+      "Comarca": "Dourados",
+      "Distrito": "Itahum",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "Cr.": "P",
+      "#F.": 1,
+      "Hab.": 4,
+      "CGR": "3,5",
+      "Bruto": "R$ 38.336,82",
+      "Liq": "R$ 23.002,09"
+    },
+    {
+      "ID": "7-Mundo Novo-Japorã-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "NO": 7,
+      "Comarca": "Mundo Novo",
+      "Distrito": "Japorã",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "Cr.": "P",
+      "#F.": 1,
+      "Hab.": 8.148,
+      "CGR": "6,5",
+      "Bruto": "R$ 34.326,63",
+      "Liq": "R$ 20.595,98"
+    },
+    {
+      "ID": "41-Nova Alvorada do Sul-Sede-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 41,
+      "Comarca": "Nova Alvorada do Sul",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "P",
+      "#F.": 2,
+      "Hab.": 21.822,
+      "CGR": 2,
+      "Bruto": "R$ 32.435,31",
+      "Liq": "R$ 19.461,19"
+    },
+    {
+      "ID": "58-Bela Vista-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "NO": 58,
+      "Comarca": "Bela Vista",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "Cr.": "P",
+      "#F.": 4,
+      "Hab.": 21.613,
+      "CGR": "4,5",
+      "Bruto": "R$ 32.086,17",
+      "Liq": "R$ 19.251,70"
+    },
+    {
+      "ID": "2-Camapuã-Figueirão-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "NO": 2,
+      "Comarca": "Camapuã",
+      "Distrito": "Figueirão",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "Cr.": "P",
+      "#F.": 2,
+      "Hab.": 3.539,
+      "CGR": 4,
+      "Bruto": "R$ 31.254,71",
+      "Liq": "R$ 18.752,83"
+    },
+    {
+      "ID": "19-Rio Negro-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "NO": 19,
+      "Comarca": "Rio Negro",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "Cr.": "P",
+      "#F.": 2,
+      "Hab.": 4.841,
+      "CGR": 2,
+      "Bruto": "R$ 30.265,27",
+      "Liq": "R$ 18.159,16"
+    },
+    {
+      "ID": "25-Dourados-São Pedro-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "NO": 25,
+      "Comarca": "Dourados",
+      "Distrito": "São Pedro",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "Cr.": "P",
+      "#F.": 1,
+      "Hab.": 4,
+      "CGR": "3,5",
+      "Bruto": "R$ 30.000,00",
+      "Liq": "R$ 18.000,00"
+    },
+    {
+      "ID": "10-Chapadão do Sul-Paraíso das Águas-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "NO": 10,
+      "Comarca": "Chapadão do Sul",
+      "Distrito": "Paraíso das Águas",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "Cr.": "P",
+      "#F.": 1,
+      "Hab.": 5.51,
+      "CGR": 4,
+      "Bruto": "R$ 29.814,68",
+      "Liq": "R$ 17.888,81"
+    },
+    {
+      "ID": "15-Sonora-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "NO": 15,
+      "Comarca": "Sonora",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "Cr.": "R",
+      "#F.": 3,
+      "Hab.": 14.516,
+      "CGR": "5,5",
+      "Bruto": "R$ 29.008,51",
+      "Liq": "R$ 17.405,11"
+    },
+    {
+      "ID": "53-Porto Murtinho-Sede-SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE",
+      "NO": 53,
+      "Comarca": "Porto Murtinho",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE",
+      "Cr.": "P",
+      "#F.": 3,
+      "Hab.": 12.859,
+      "CGR": 6,
+      "Bruto": "R$ 28.832,66",
+      "Liq": "R$ 17.299,60"
+    },
+    {
+      "ID": "57-Nioaque-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "NO": 57,
+      "Comarca": "Nioaque",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "Cr.": "R",
+      "#F.": 3,
+      "Hab.": 13.22,
+      "CGR": "2,5",
+      "Bruto": "R$ 28.475,13",
+      "Liq": "R$ 17.085,08"
+    },
+    {
+      "ID": "36-Fátima do Sul-Sede-3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+      "NO": 36,
+      "Comarca": "Fátima do Sul",
+      "Distrito": "Sede",
+      "Denom": "3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+      "Cr.": "R",
+      "#F.": 3,
+      "Hab.": 20.609,
+      "CGR": "3,5",
+      "Bruto": "R$ 28.028,79",
+      "Liq": "R$ 16.817,27"
+    },
+    {
+      "ID": "27-Rio Verde de Mato Grosso-Sede-2º SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 27,
+      "Comarca": "Rio Verde de Mato Grosso",
+      "Distrito": "Sede",
+      "Denom": "2º SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "R",
+      "#F.": 2,
+      "Hab.": 19.818,
+      "CGR": "2,5",
+      "Bruto": "R$ 27.587,08",
+      "Liq": "R$ 16.552,25"
+    },
+    {
+      "ID": "18-Iguatemi-Sede-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "NO": 18,
+      "Comarca": "Iguatemi",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+      "Cr.": "R",
+      "#F.": 3,
+      "Hab.": 13.796,
+      "CGR": 6,
+      "Bruto": "R$ 27.291,97",
+      "Liq": "R$ 16.375,18"
+    },
+    {
+      "ID": "33-Miranda-Bodoquena-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "NO": 33,
+      "Comarca": "Miranda",
+      "Distrito": "Bodoquena",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "Cr.": "R",
+      "#F.": 2,
+      "Hab.": 8.567,
+      "CGR": 4,
+      "Bruto": "R$ 26.941,97",
+      "Liq": "R$ 16.165,18"
+    },
+    {
+      "ID": "55-Batayporã-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "NO": 55,
+      "Comarca": "Batayporã",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "Cr.": "P",
+      "#F.": 2,
+      "Hab.": 10.712,
+      "CGR": "4,5",
+      "Bruto": "R$ 24.127,19",
+      "Liq": "R$ 14.476,31"
+    },
+    {
+      "ID": "8-Deodápolis-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "NO": 8,
+      "Comarca": "Deodápolis",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "Cr.": "P",
+      "#F.": 2,
+      "Hab.": 13.663,
+      "CGR": 4,
+      "Bruto": "R$ 22.774,28",
+      "Liq": "R$ 13.664,57"
+    },
+    {
+      "ID": "24-Anaurilândia-Quebracho-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "NO": 24,
+      "Comarca": "Anaurilândia",
+      "Distrito": "Quebracho",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "Cr.": "R",
+      "#F.": 0,
+      "Hab.": 4,
+      "CGR": "5,5",
+      "Bruto": "R$ 19.473,56",
+      "Liq": "R$ 11.684,14"
+    },
+    {
+      "ID": "43-Pedro Gomes-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "NO": 43,
+      "Comarca": "Pedro Gomes",
+      "Distrito": "Sede",
+      "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+      "Cr.": "P",
+      "#F.": 2,
+      "Hab.": 6.941,
+      "CGR": "4,5",
+      "Bruto": "R$ 19.287,73",
+      "Liq": "R$ 11.572,64"
+    },
+    {
+      "ID": "56-Bataguassu-Santa Rita do Pardo-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "NO": 56,
+      "Comarca": "Bataguassu",
+      "Distrito": "Santa Rita do Pardo",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "Cr.": "P",
+      "#F.": 0,
+      "Hab.": 7.027,
+      "CGR": 4,
+      "Bruto": "R$ 18.296,15",
+      "Liq": "R$ 10.977,69"
+    },
+    {
+      "ID": "49-Ivinhema-Novo Horizonte do Sul-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "NO": 49,
+      "Comarca": "Ivinhema",
+      "Distrito": "Novo Horizonte do Sul",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "Cr.": "P",
+      "#F.": 1,
+      "Hab.": 4.721,
+      "CGR": 5,
+      "Bruto": "R$ 17.791,03",
+      "Liq": "R$ 10.674,62"
+    },
+    {
+      "ID": "1-Iguatemi-Tacuru-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "NO": 1,
+      "Comarca": "Iguatemi",
+      "Distrito": "Tacuru",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "Cr.": "P",
+      "#F.": 1,
+      "Hab.": 10.808,
+      "CGR": 6,
+      "Bruto": "R$ 17.232,45",
+      "Liq": "R$ 10.339,47"
+    },
+    {
+      "ID": "4-Caarapó-Juti-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "NO": 4,
+      "Comarca": "Caarapó",
+      "Distrito": "Juti",
+      "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "Cr.": "P",
+      "#F.": 1,
+      "Hab.": 6.729,
+      "CGR": 5,
+      "Bruto": "R$ 17.209,99",
+      "Liq": "R$ 10.325,99"
+    },
+    {
+      "ID": "3-Batayporã-Taquarussu-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+      "NO": 3,
+      "Comarca": "Batayporã",
+      "Distrito": "Taquarussu",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "R",
+    "#F.": 1,
+    "Hab.": 3.625,
+    "CGR": 5,
+    "Bruto": "R$ 14.679,94",
+    "Liq": "R$ 8.807,96"
+  },
+  {
+    "ID": "5-Ponta Porã-Sanga Puitã-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 5,
+    "Comarca": "Ponta Porã",
+    "Distrito": "Sanga Puitã",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "P",
+    "#F.": 2,
+    "Hab.": 4,
+    "CGR": "4,5",
+    "Bruto": "R$ 14.313,25",
+    "Liq": "R$ 8.587,95"
+  },
+  {
+    "ID": "34-Cassilândia-Sede-2° SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "NO": 34,
+    "Comarca": "Cassilândia",
+    "Distrito": "Sede",
+    "Denom": "2° SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "Cr.": "P",
+    "#F.": 2,
+    "Hab.": 20.988,
+    "CGR": 6,
+    "Bruto": "R$ 13.617,68",
+    "Liq": "R$ 8.170,61"
+  },
+  {
+    "ID": "6-Fátima do Sul-Culturama-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 6,
+    "Comarca": "Fátima do Sul",
+    "Distrito": "Culturama",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "R",
+    "#F.": 2,
+    "Hab.": 4,
+    "CGR": 4,
+    "Bruto": "R$ 7.579,00",
+    "Liq": "R$ 4.547,40"
+  },
+  {
+    "ID": "22-Aquidauana-Piraputanga-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 22,
+    "Comarca": "Aquidauana",
+    "Distrito": "Piraputanga",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "P",
+    "#F.": 0,
+    "Hab.": 4,
+    "CGR": 2,
+    "Bruto": "R$ 5.500,00",
+    "Liq": "R$ 3.300,00"
+  },
+  {
+    "ID": "23-Angélica-Ipezal-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 23,
+    "Comarca": "Angélica",
+    "Distrito": "Ipezal",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "P",
+    "#F.": 1,
+    "Hab.": 4,
+    "CGR": 4,
+    "Bruto": "R$ 5.500,00",
+    "Liq": "R$ 3.300,00"
+  }
+]; 
+    </script>
+    <script> <!-- ordem de preferência -->
+const pref = [
+  {
+    "ID": "44-Dourados-Sede-SERVIÇO DE REGISTRO DE IMÓVEIS DA 1ª CIRCUNSCRIÇÃO",
+    "NO": 44,
+    "Comarca": "Dourados",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO DE REGISTRO DE IMÓVEIS DA 1ª CIRCUNSCRIÇÃO",
+    "Cr.": "P",
+    "#F.": 33,
+    "Hab.": 243.368,
+    "CGR": "3,5",
+    "Bruto": "R$ 750.000,00",
+    "Liq": "R$ 450.000,00"
+  },
+  {
+    "ID": "20-Maracaju-Sede-SERVIÇO DE REGISTRO DE IMÓVEIS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "NO": 20,
+    "Comarca": "Maracaju",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO DE REGISTRO DE IMÓVEIS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "Cr.": "P",
+    "#F.": 12,
+    "Hab.": 45.047,
+    "CGR": "2,5",
+    "Bruto": "R$ 431.233,22",
+    "Liq": "R$ 258.739,93"
+  },
+  {
+    "ID": "54-Três Lagoas-Sede-SERVIÇO DE REGISTRO DE IMÓVEIS DA 2ª CIRCUNSCRIÇÃO",
+    "NO": 54,
+    "Comarca": "Três Lagoas",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO DE REGISTRO DE IMÓVEIS DA 2ª CIRCUNSCRIÇÃO",
+    "Cr.": "R",
+    "#F.": 14,
+    "Hab.": 132.152,
+    "CGR": 3,
+    "Bruto": "R$ 333.333,33",
+    "Liq": "R$ 200.000,00"
+  },
+  {
+    "ID": "50-Nova Andradina-Sede-SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "NO": 50,
+    "Comarca": "Nova Andradina",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "Cr.": "P",
+    "#F.": 14,
+    "Hab.": 48.563,
+    "CGR": "4,5",
+    "Bruto": "R$ 288.807,87",
+    "Liq": "R$ 173.284,72"
+  },
+  {
+    "ID": "14-Campo Grande-Sede-3º TABELIONATO DE PROTESTO DE TÍTULOS",
+    "NO": 14,
+    "Comarca": "Campo Grande",
+    "Distrito": "Sede",
+    "Denom": "3º TABELIONATO DE PROTESTO DE TÍTULOS",
+    "Cr.": "P",
+    "#F.": 9,
+    "Hab.": 897.938,
+    "CGR": 0,
+    "Bruto": "R$ 272.145,77",
+    "Liq": "R$ 163.287,46"
+  },
+  {
+    "ID": "48-Rio Brilhante-Sede-SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "NO": 48,
+    "Comarca": "Rio Brilhante",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "Cr.": "R",
+    "#F.": 11,
+    "Hab.": 37.601,
+    "CGR": "2,5",
+    "Bruto": "R$ 204.249,56",
+    "Liq": "R$ 122.549,74"
+  },
+  {
+    "ID": "32-Campo Grande-Sede-4º SERVIÇO NOTARIAL E DE REGISTRO DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS",
+    "NO": 32,
+    "Comarca": "Campo Grande",
+    "Distrito": "Sede",
+    "Denom": "4º SERVIÇO NOTARIAL E DE REGISTRO DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS",
+    "Cr.": "P",
+    "#F.": 20,
+    "Hab.": 897.938,
+    "CGR": 0,
+    "Bruto": "R$ 178.873,31",
+    "Liq": "R$ 107.323,99"
+  },
+  {
+    "ID": "39-Ponta Porã-Sede-3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+    "NO": 39,
+    "Comarca": "Ponta Porã",
+    "Distrito": "Sede",
+    "Denom": "3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+    "Cr.": "R",
+    "#F.": 9,
+    "Hab.": 92.017,
+    "CGR": "4,5",
+    "Bruto": "R$ 167.553,18",
+    "Liq": "R$ 100.531,91"
+  },
+  {
+    "ID": "40-Campo Grande-Sede-6º SERVIÇO NOTARIAL",
+    "NO": 40,
+    "Comarca": "Campo Grande",
+    "Distrito": "Sede",
+    "Denom": "6º SERVIÇO NOTARIAL",
+    "Cr.": "P",
+    "#F.": 17,
+    "Hab.": 897.938,
+    "CGR": 0,
+    "Bruto": "R$ 145.814,53",
+    "Liq": "R$ 87.488,72"
+  },
+  {
+    "ID": "42-Dourados-Sede-3º SERVIÇO NOTARIAL",
+    "NO": 42,
+    "Comarca": "Dourados",
+    "Distrito": "Sede",
+    "Denom": "3º SERVIÇO NOTARIAL",
+    "Cr.": "R",
+    "#F.": 13,
+    "Hab.": 243.368,
+    "CGR": "3,5",
+    "Bruto": "R$ 133.361,91",
+    "Liq": "R$ 80.017,15"
+  },
+  {
+    "ID": "29-Amambai-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS",
+    "NO": 29,
+    "Comarca": "Amambai",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS",
+    "Cr.": "P",
+    "#F.": 10,
+    "Hab.": 39.325,
+    "CGR": "5,5",
+    "Bruto": "R$ 129.738,85",
+    "Liq": "R$ 77.843,31"
+  },
+  {
+    "ID": "11-Três Lagoas-Sede-2º SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "NO": 11,
+    "Comarca": "Três Lagoas",
+    "Distrito": "Sede",
+    "Denom": "2º SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "Cr.": "P",
+    "#F.": 11,
+    "Hab.": 132.152,
+    "CGR": 5,
+    "Bruto": "R$ 106.033,88",
+    "Liq": "R$ 63.620,33"
+  },
+  {
+    "ID": "35-Anastácio-Sede-SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "NO": 35,
+    "Comarca": "Anastácio",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "Cr.": "P",
+    "#F.": 4,
+    "Hab.": 24.107,
+    "CGR": 2,
+    "Bruto": "R$ 102.859,04",
+    "Liq": "R$ 61.715,42"
+  },
+  {
+    "ID": "59-Deodápolis-Sede-SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "NO": 59,
+    "Comarca": "Deodápolis",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "Cr.": "P",
+    "#F.": 2,
+    "Hab.": 13.663,
+    "CGR": 4,
+    "Bruto": "R$ 91.240,93",
+    "Liq": "R$ 54.744,56"
+  },
+  {
+    "ID": "38-Naviraí-Sede-2º SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "NO": 38,
+    "Comarca": "Naviraí",
+    "Distrito": "Sede",
+    "Denom": "2º SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "Cr.": "P",
+    "#F.": 10,
+    "Hab.": 50.457,
+    "CGR": "5,5",
+    "Bruto": "R$ 87.378,56",
+    "Liq": "R$ 52.427,14"
+  },
+  {
+    "ID": "21-Bataguassu-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "NO": 21,
+    "Comarca": "Bataguassu",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "Cr.": "R",
+    "#F.": 7,
+    "Hab.": 23.031,
+    "CGR": "4,5",
+    "Bruto": "R$ 78.864,56",
+    "Liq": "R$ 47.318,74"
+  },
+  {
+    "ID": "28-Anastácio-Sede-SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE",
+    "NO": 28,
+    "Comarca": "Anastácio",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE",
+    "Cr.": "P",
+    "#F.": 3,
+    "Hab.": 24.107,
+    "CGR": 2,
+    "Bruto": "R$ 78.805,22",
+    "Liq": "R$ 47.283,13"
+  },
+  {
+    "ID": "31-Aquidauana-Sede-4º SERVIÇO NOTARIAL E DE REGISTRO DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS",
+    "NO": 31,
+    "Comarca": "Aquidauana",
+    "Distrito": "Sede",
+    "Denom": "4º SERVIÇO NOTARIAL E DE REGISTRO DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS",
+    "Cr.": "P",
+    "#F.": 4,
+    "Hab.": 46.803,
+    "CGR": 2,
+    "Bruto": "R$ 78.352,01",
+    "Liq": "R$ 47.011,21"
+  },
+  {
+    "ID": "37-Bonito-Sede-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "NO": 37,
+    "Comarca": "Bonito",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "Cr.": "P",
+    "#F.": 4,
+    "Hab.": 23.659,
+    "CGR": 4,
+    "Bruto": "R$ 78.000,15",
+    "Liq": "R$ 46.800,09"
+  },
+  {
+    "ID": "9-Corumbá-Sede-3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+    "NO": 9,
+    "Comarca": "Corumbá",
+    "Distrito": "Sede",
+    "Denom": "3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+    "Cr.": "R",
+    "#F.": 3,
+    "Hab.": 96.268,
+    "CGR": "5,5",
+    "Bruto": "R$ 74.401,83",
+    "Liq": "R$ 44.641,10"
+  },
+  {
+    "ID": "26-Aparecida do Taboado-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "NO": 26,
+    "Comarca": "Aparecida do Taboado",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "Cr.": "P",
+    "#F.": 6,
+    "Hab.": 27.674,
+    "CGR": "6,5",
+    "Bruto": "R$ 73.884,16",
+    "Liq": "R$ 44.330,50"
+  },
+  {
+    "ID": "12-Porto Murtinho-Sede-SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "NO": 12,
+    "Comarca": "Porto Murtinho",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO DE REGISTRO DE IMÓVEIS, DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS E CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "Cr.": "R",
+    "#F.": 3,
+    "Hab.": 12.859,
+    "CGR": 6,
+    "Bruto": "R$ 71.707,47",
+    "Liq": "R$ 43.024,48"
+  },
+  {
+    "ID": "45-Corumbá-Sede-2° SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "NO": 45,
+    "Comarca": "Corumbá",
+    "Distrito": "Sede",
+    "Denom": "2° SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "Cr.": "R",
+    "#F.": 5,
+    "Hab.": 96.268,
+    "CGR": "5,5",
+    "Bruto": "R$ 71.141,92",
+    "Liq": "R$ 42.685,15"
+  },
+  {
+    "ID": "46-Água Clara-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "NO": 46,
+    "Comarca": "Água Clara",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "Cr.": "P",
+    "#F.": 3,
+    "Hab.": 16.741,
+    "CGR": 3,
+    "Bruto": "R$ 67.041,22",
+    "Liq": "R$ 40.224,73"
+  },
+  {
+    "ID": "47-Corumbá-Sede-4º SERVIÇO NOTARIAL E DE REGISTRO DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS",
+    "NO": 47,
+    "Comarca": "Corumbá",
+    "Distrito": "Sede",
+    "Denom": "4º SERVIÇO NOTARIAL E DE REGISTRO DE TÍTULOS E DOCUMENTOS E CIVIL DAS PESSOAS JURÍDICAS",
+    "Cr.": "P",
+    "#F.": 4,
+    "Hab.": 96.268,
+    "CGR": "5,5",
+    "Bruto": "R$ 64.456,26",
+    "Liq": "R$ 38.673,76"
+  },
+  {
+    "ID": "16-Inocência-Sede-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "NO": 16,
+    "Comarca": "Inocência",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "Cr.": "P",
+    "#F.": 1,
+    "Hab.": 8.404,
+    "CGR": 5,
+    "Bruto": "R$ 51.685,22",
+    "Liq": "R$ 31.011,13"
+  },
+  {
+    "ID": "51-Jardim-Guia Lopes da Laguna-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 51,
+    "Comarca": "Jardim",
+    "Distrito": "Guia Lopes da Laguna",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "R",
+    "#F.": 3,
+    "Hab.": 9.939,
+    "CGR": 3,
+    "Bruto": "R$ 50.562,48",
+    "Liq": "R$ 30.337,49"
+  },
+  {
+    "ID": "52-Paranaíba-Sede-3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+    "NO": 52,
+    "Comarca": "Paranaíba",
+    "Distrito": "Sede",
+    "Denom": "3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+    "Cr.": "P",
+    "#F.": 2,
+    "Hab.": 40.957,
+    "CGR": 6,
+    "Bruto": "R$ 46.894,82",
+    "Liq": "R$ 28.136,89"
+  },
+  {
+    "ID": "60-Mundo Novo-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "NO": 60,
+    "Comarca": "Mundo Novo",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "Cr.": "R",
+    "#F.": 4,
+    "Hab.": 19.193,
+    "CGR": 7,
+    "Bruto": "R$ 45.201,99",
+    "Liq": "R$ 27.121,19"
+  },
+  {
+    "ID": "17-Angélica-Sede-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "NO": 17,
+    "Comarca": "Angélica",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "Cr.": "P",
+    "#F.": 3,
+    "Hab.": 10.729,
+    "CGR": 4,
+    "Bruto": "R$ 41.848,55",
+    "Liq": "R$ 25.109,13"
+  },
+  {
+    "ID": "30-Coxim-Alcinópolis-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 30,
+    "Comarca": "Coxim",
+    "Distrito": "Alcinópolis",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "R",
+    "#F.": 2,
+    "Hab.": 4.537,
+    "CGR": "4,5",
+    "Bruto": "R$ 39.611,18",
+    "Liq": "R$ 23.766,71"
+  },
+  {
+    "ID": "13-Dourados-Itahum-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 13,
+    "Comarca": "Dourados",
+    "Distrito": "Itahum",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "P",
+    "#F.": 1,
+    "Hab.": 4,
+    "CGR": "3,5",
+    "Bruto": "R$ 38.336,82",
+    "Liq": "R$ 23.002,09"
+  },
+  {
+    "ID": "7-Mundo Novo-Japorã-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 7,
+    "Comarca": "Mundo Novo",
+    "Distrito": "Japorã",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "P",
+    "#F.": 1,
+    "Hab.": 8.148,
+    "CGR": "6,5",
+    "Bruto": "R$ 34.326,63",
+    "Liq": "R$ 20.595,98"
+  },
+  {
+    "ID": "41-Nova Alvorada do Sul-Sede-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "NO": 41,
+    "Comarca": "Nova Alvorada do Sul",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "Cr.": "P",
+    "#F.": 2,
+    "Hab.": 21.822,
+    "CGR": 2,
+    "Bruto": "R$ 32.435,31",
+    "Liq": "R$ 19.461,19"
+  },
+  {
+    "ID": "58-Bela Vista-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "NO": 58,
+    "Comarca": "Bela Vista",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "Cr.": "P",
+    "#F.": 4,
+    "Hab.": 21.613,
+    "CGR": "4,5",
+    "Bruto": "R$ 32.086,17",
+    "Liq": "R$ 19.251,70"
+  },
+  {
+    "ID": "2-Camapuã-Figueirão-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 2,
+    "Comarca": "Camapuã",
+    "Distrito": "Figueirão",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "P",
+    "#F.": 2,
+    "Hab.": 3.539,
+    "CGR": 4,
+    "Bruto": "R$ 31.254,71",
+    "Liq": "R$ 18.752,83"
+  },
+  {
+    "ID": "19-Rio Negro-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "NO": 19,
+    "Comarca": "Rio Negro",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "Cr.": "P",
+    "#F.": 2,
+    "Hab.": 4.841,
+    "CGR": 2,
+    "Bruto": "R$ 30.265,27",
+    "Liq": "R$ 18.159,16"
+  },
+  {
+    "ID": "25-Dourados-São Pedro-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 25,
+    "Comarca": "Dourados",
+    "Distrito": "São Pedro",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "P",
+    "#F.": 1,
+    "Hab.": 4,
+    "CGR": "3,5",
+    "Bruto": "R$ 30.000,00",
+    "Liq": "R$ 18.000,00"
+  },
+  {
+    "ID": "10-Chapadão do Sul-Paraíso das Águas-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 10,
+    "Comarca": "Chapadão do Sul",
+    "Distrito": "Paraíso das Águas",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "P",
+    "#F.": 1,
+    "Hab.": 5.51,
+    "CGR": 4,
+    "Bruto": "R$ 29.814,68",
+    "Liq": "R$ 17.888,81"
+  },
+  {
+    "ID": "15-Sonora-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "NO": 15,
+    "Comarca": "Sonora",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "Cr.": "R",
+    "#F.": 3,
+    "Hab.": 14.516,
+    "CGR": "5,5",
+    "Bruto": "R$ 29.008,51",
+    "Liq": "R$ 17.405,11"
+  },
+  {
+    "ID": "53-Porto Murtinho-Sede-SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE",
+    "NO": 53,
+    "Comarca": "Porto Murtinho",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE",
+    "Cr.": "P",
+    "#F.": 3,
+    "Hab.": 12.859,
+    "CGR": 6,
+    "Bruto": "R$ 28.832,66",
+    "Liq": "R$ 17.299,60"
+  },
+  {
+    "ID": "57-Nioaque-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "NO": 57,
+    "Comarca": "Nioaque",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "Cr.": "R",
+    "#F.": 3,
+    "Hab.": 13.22,
+    "CGR": "2,5",
+    "Bruto": "R$ 28.475,13",
+    "Liq": "R$ 17.085,08"
+  },
+  {
+    "ID": "36-Fátima do Sul-Sede-3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+    "NO": 36,
+    "Comarca": "Fátima do Sul",
+    "Distrito": "Sede",
+    "Denom": "3º SERVIÇO NOTARIAL E DE TABELIONATO DE PROTESTO DE TÍTULOS",
+    "Cr.": "R",
+    "#F.": 3,
+    "Hab.": 20.609,
+    "CGR": "3,5",
+    "Bruto": "R$ 28.028,79",
+    "Liq": "R$ 16.817,27"
+  },
+  {
+    "ID": "27-Rio Verde de Mato Grosso-Sede-2º SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "NO": 27,
+    "Comarca": "Rio Verde de Mato Grosso",
+    "Distrito": "Sede",
+    "Denom": "2º SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "Cr.": "R",
+    "#F.": 2,
+    "Hab.": 19.818,
+    "CGR": "2,5",
+    "Bruto": "R$ 27.587,08",
+    "Liq": "R$ 16.552,25"
+  },
+  {
+    "ID": "18-Iguatemi-Sede-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "NO": 18,
+    "Comarca": "Iguatemi",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "Cr.": "R",
+    "#F.": 3,
+    "Hab.": 13.796,
+    "CGR": 6,
+    "Bruto": "R$ 27.291,97",
+    "Liq": "R$ 16.375,18"
+  },
+  {
+    "ID": "33-Miranda-Bodoquena-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 33,
+    "Comarca": "Miranda",
+    "Distrito": "Bodoquena",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "R",
+    "#F.": 2,
+    "Hab.": 8.567,
+    "CGR": 4,
+    "Bruto": "R$ 26.941,97",
+    "Liq": "R$ 16.165,18"
+  },
+  {
+    "ID": "55-Batayporã-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "NO": 55,
+    "Comarca": "Batayporã",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "Cr.": "P",
+    "#F.": 2,
+    "Hab.": 10.712,
+    "CGR": "4,5",
+    "Bruto": "R$ 24.127,19",
+    "Liq": "R$ 14.476,31"
+  },
+  {
+    "ID": "8-Deodápolis-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "NO": 8,
+    "Comarca": "Deodápolis",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "Cr.": "P",
+    "#F.": 2,
+    "Hab.": 13.663,
+    "CGR": 4,
+    "Bruto": "R$ 22.774,28",
+    "Liq": "R$ 13.664,57"
+  },
+  {
+    "ID": "24-Anaurilândia-Quebracho-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 24,
+    "Comarca": "Anaurilândia",
+    "Distrito": "Quebracho",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "R",
+    "#F.": 0,
+    "Hab.": 4,
+    "CGR": "5,5",
+    "Bruto": "R$ 19.473,56",
+    "Liq": "R$ 11.684,14"
+  },
+  {
+    "ID": "43-Pedro Gomes-Sede-SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "NO": 43,
+    "Comarca": "Pedro Gomes",
+    "Distrito": "Sede",
+    "Denom": "SERVIÇO NOTARIAL E TABELIONATO DE PROTESTO DE TÍTULOS E OUTROS DOCUMENTOS DE DÍVIDA",
+    "Cr.": "P",
+    "#F.": 2,
+    "Hab.": 6.941,
+    "CGR": "4,5",
+    "Bruto": "R$ 19.287,73",
+    "Liq": "R$ 11.572,64"
+  },
+  {
+    "ID": "56-Bataguassu-Santa Rita do Pardo-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 56,
+    "Comarca": "Bataguassu",
+    "Distrito": "Santa Rita do Pardo",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "P",
+    "#F.": 0,
+    "Hab.": 7.027,
+    "CGR": 4,
+    "Bruto": "R$ 18.296,15",
+    "Liq": "R$ 10.977,69"
+  },
+  {
+    "ID": "49-Ivinhema-Novo Horizonte do Sul-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 49,
+    "Comarca": "Ivinhema",
+    "Distrito": "Novo Horizonte do Sul",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "P",
+    "#F.": 1,
+    "Hab.": 4.721,
+    "CGR": 5,
+    "Bruto": "R$ 17.791,03",
+    "Liq": "R$ 10.674,62"
+  },
+  {
+    "ID": "1-Iguatemi-Tacuru-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 1,
+    "Comarca": "Iguatemi",
+    "Distrito": "Tacuru",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "P",
+    "#F.": 1,
+    "Hab.": 10.808,
+    "CGR": 6,
+    "Bruto": "R$ 17.232,45",
+    "Liq": "R$ 10.339,47"
+  },
+  {
+    "ID": "4-Caarapó-Juti-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 4,
+    "Comarca": "Caarapó",
+    "Distrito": "Juti",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "P",
+    "#F.": 1,
+    "Hab.": 6.729,
+    "CGR": 5,
+    "Bruto": "R$ 17.209,99",
+    "Liq": "R$ 10.325,99"
+  },
+  {
+    "ID": "3-Batayporã-Taquarussu-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 3,
+    "Comarca": "Batayporã",
+    "Distrito": "Taquarussu",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "R",
+    "#F.": 1,
+    "Hab.": 3.625,
+    "CGR": 5,
+    "Bruto": "R$ 14.679,94",
+    "Liq": "R$ 8.807,96"
+  },
+  {
+    "ID": "5-Ponta Porã-Sanga Puitã-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 5,
+    "Comarca": "Ponta Porã",
+    "Distrito": "Sanga Puitã",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "P",
+    "#F.": 2,
+    "Hab.": 4,
+    "CGR": "4,5",
+    "Bruto": "R$ 14.313,25",
+    "Liq": "R$ 8.587,95"
+  },
+  {
+    "ID": "34-Cassilândia-Sede-2° SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "NO": 34,
+    "Comarca": "Cassilândia",
+    "Distrito": "Sede",
+    "Denom": "2° SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS E DE INTERDIÇÕES E TUTELAS",
+    "Cr.": "P",
+    "#F.": 2,
+    "Hab.": 20.988,
+    "CGR": 6,
+    "Bruto": "R$ 13.617,68",
+    "Liq": "R$ 8.170,61"
+  },
+  {
+    "ID": "6-Fátima do Sul-Culturama-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 6,
+    "Comarca": "Fátima do Sul",
+    "Distrito": "Culturama",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "R",
+    "#F.": 2,
+    "Hab.": 4,
+    "CGR": 4,
+    "Bruto": "R$ 7.579,00",
+    "Liq": "R$ 4.547,40"
+  },
+  {
+    "ID": "22-Aquidauana-Piraputanga-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 22,
+    "Comarca": "Aquidauana",
+    "Distrito": "Piraputanga",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "P",
+    "#F.": 0,
+    "Hab.": 4,
+    "CGR": 2,
+    "Bruto": "R$ 5.500,00",
+    "Liq": "R$ 3.300,00"
+  },
+  {
+    "ID": "23-Angélica-Ipezal-SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "NO": 23,
+    "Comarca": "Angélica",
+    "Distrito": "Ipezal",
+    "Denom": "SERVIÇO NOTARIAL E DE REGISTRO CIVIL DAS PESSOAS NATURAIS",
+    "Cr.": "P",
+    "#F.": 1,
+    "Hab.": 4,
+    "CGR": 4,
+    "Bruto": "R$ 5.500,00",
+    "Liq": "R$ 3.300,00"
+  }
+];
+    </script>
+    <script>
+			const remframe = document.getElementById("remframe");
+			const pcdframe = document.getElementById("pcdframe");
+			const provframe = document.getElementById("provframe");
+			let chosen={};
+			let cands={};
+			let absord={};
+			let ordcount=0;
+			let choicecount=0;
+			genApp();
+
+			function genChoiceList() {
+				pref.forEach( (cart) => {
+					chosen[cart.NO] = 0;
+				});
+			}
+
+			function unmakeChoice(line) {
+				if (line.style.backgroundColor!="dodgerblue" || absord[line.id]!=choicecount) return;
+				const code=line.id;
+				const cand=line.querySelector('#L'+code);
+				const sel=line.querySelector('#S'+code);
+				const but0=line.querySelector('#B0'+code);
+				const but1=line.querySelector('#B1'+code);
+				const cart = sel.value;
+				let ord=0;
+				if (cart[1]=='-') { // NO < 10
+					ord=parseInt(cart[0]);
+				}
+				else if (cart[1]!='e') { // NO > 10
+					ord=10*parseInt(cart[0])+parseInt(cart[1]);
+				}
+				if (cart[1]!='e') chosen[ord]=0;
+				line.style.backgroundColor="lightblue";
+				cand.style.color="black";
+				but0.style.color="black";
+				but1.style.color="gray";
+				sel.innerHTML=""; /* apaga opção anterior */
+				let opt = document.createElement("option");
+				sel.appendChild(opt);
+				if (code[0]=='R') {
+					opt.textContent="Renúncia (Remoção) / Reescolha";
+					remav.forEach( (rcart) => {
+						if (chosen[rcart.NO]==0) {
+							opt = document.createElement("option");
+							opt.textContent=rcart.ID;
+							sel.appendChild(opt);
+						}
+					});
+				}
+				else if (code[0]=='D') {
+					opt.textContent="Renúncia (PcD) / Reescolha";
+					pcdav.forEach( (dcart) => {
+						if (chosen[dcart.NO]==0) {
+							opt = document.createElement("option");
+							opt.textContent=dcart.ID;
+							sel.appendChild(opt);
+						}
+					});
+				}
+				else {
+					opt.textContent="Renúncia (Provimento) / Reescolha";
+					provav.forEach( (pcart) => {
+						if (chosen[pcart.NO]==0) {
+							opt = document.createElement("option");
+							opt.textContent=pcart.ID;
+							sel.appendChild(opt);
+						}
+					});
+				}
+				let opts=document.querySelectorAll('option');
+				opts.forEach( (opt) => {
+					if (opt.style.display==="none" && opt.textContent===cart) opt.style.display="block";
+
+				});
+				choicecount--;
+			}
+
+			function makeChoice(line) {
+				if (absord[line.id]>(choicecount+1)) return; // block if not next
+				const code=line.id;
+				const sel=line.querySelector('#S'+code);
+				let cart=sel.value;
+				let ord=0; // Default=renúncia/reescolha
+				if (cart[1]=='-') { // NO < 10
+					ord=parseInt(cart[0]);
+				}
+				else if (cart[1]!='e') { // NO > 10
+					ord=10*parseInt(cart[0])+parseInt(cart[1]);
+				}
+				if (cart[1]!='e' && chosen[ord]==0) {
+					chosen[ord]=code;
+					//let opts=document.getElementsByTagName('option');
+					let opts=document.querySelectorAll('option');
+					opts.forEach( (opt) => {
+						target=opt.parentNode.parentNode; // hopefully, the option line
+						if (opt.textContent===cart && target.backgroundColor!='dodgerblue' && parseInt(target.id.slice(1)) != code) {
+							opt.style.display="none"; // hide the same option everywhere else
+						}
+					});
+				}
+				sel.innerHTML="<option>"+cart+"</option>";
+				const cand=line.querySelector('#L'+code);
+				const but0=line.querySelector('#B0'+code);
+				const but1=line.querySelector('#B1'+code);
+				if (line.style.backgroundColor!="dodgerblue") {
+					line.style.backgroundColor="dodgerblue";
+					cand.style.color="white";
+					but0.style.color="grey";
+					but1.style.color="black";
+					choicecount++;
+				}
+			}
+
+			function genRemCandidate(candidate) {
+				let line = document.createElement("p");
+				let code='R'+candidate.cl;
+				line.setAttribute('id',code);
+				ordcount++;
+				absord[code]=ordcount;
+				let cand = document.createElement("label");
+				cand.setAttribute('id','L'+code);
+				cand.textContent=candidate.cl+'º) '+candidate.nome+': ';
+				let sel = document.createElement("select");
+				sel.setAttribute('id','S'+code);
+				let opt = document.createElement("option");
+				opt.textContent="Renúncia (Remoção) / Reescolha";
+				sel.appendChild(opt);
+				remav.forEach( (cart) => {
+					if (chosen[cart.NO]==0) {
+						opt = document.createElement("option");
+						opt.textContent=cart.ID;
+						sel.appendChild(opt);
+					}
+				});
+				let but0 = document.createElement("button");
+				but0.setAttribute('id','B0'+code);
+				but0.textContent="Escolher";
+				but0.addEventListener("click", () => makeChoice(line));
+				let but1 = document.createElement("button");
+				but1.setAttribute('id','B1'+code);
+				but1.style.color="gray";
+				but1.textContent="Desfazer";
+				but1.addEventListener("click", () => unmakeChoice(line));
+				line.appendChild(cand);
+				line.append(sel);
+				line.append(but0);
+				line.append(but1);
+				return line;
+			}
+
+			function genPcdCandidate(candidate) {
+				let line = document.createElement("p");
+				let code='D'+candidate.cl;
+				line.setAttribute('id',code);
+				ordcount++;
+				absord[code]=ordcount;
+				let cand = document.createElement("label");
+				cand.setAttribute('id','L'+code);
+				cand.textContent=candidate.cl+'º) '+candidate.nome+': ';
+				let sel = document.createElement("select");
+				sel.setAttribute('id','S'+code);
+				let opt = document.createElement("option");
+				opt.textContent="Renúncia (PcD) / Reescolha";
+				sel.appendChild(opt);
+				pcdav.forEach( (cart) => {
+					if (chosen[cart.NO]==0) {
+						opt = document.createElement("option");
+						opt.textContent=cart.ID;
+						sel.appendChild(opt);
+					}
+				});
+				let but0 = document.createElement("button");
+				but0.setAttribute('id','B0'+code);
+				but0.textContent="Escolher";
+				but0.addEventListener("click", () => makeChoice(line));
+				let but1 = document.createElement("button");
+				but1.setAttribute('id','B1'+code);
+				but1.style.color="gray";
+				but1.textContent="Desfazer";
+				but1.addEventListener("click", () => unmakeChoice(line));
+				line.appendChild(cand);
+				line.append(sel);
+				line.append(but0);
+				line.append(but1);
+				return line;
+			}
+
+			function genProvCandidate(candidate) {
+				let line = document.createElement("p");
+				let code='P'+candidate.cl;
+				line.setAttribute('id',code);
+				ordcount++;
+				absord[code]=ordcount;
+				let cand = document.createElement("label");
+				cand.setAttribute('id','L'+code);
+				cand.textContent=candidate.cl+'º) '+candidate.nome+': ';
+				let sel = document.createElement("select");
+				sel.setAttribute('id','S'+code);
+				let opt = document.createElement("option");
+				opt.textContent="Renúncia (Provimento) / Reescolha";
+				sel.appendChild(opt);
+				provav.forEach( (cart) => {
+					if (chosen[cart.NO]==0) {
+						opt = document.createElement("option");
+						opt.textContent=cart.ID;
+						sel.appendChild(opt);
+					}
+				});
+				let but0 = document.createElement("button");
+				but0.setAttribute('id','B0'+code);
+				but0.textContent="Escolher";
+				but0.addEventListener("click", () => makeChoice(line));
+				let but1 = document.createElement("button");
+				but1.setAttribute('id','B1'+code);
+				but1.style.color="gray";
+				but1.textContent="Desfazer";
+				but1.addEventListener("click", () => unmakeChoice(line));
+				line.appendChild(cand);
+				line.append(sel);
+				line.append(but0);
+				line.append(but1);
+				return line;
+			}
+
+			function genApp() {
+				genChoiceList();
+				let reset=document.getElementById("reset");
+				reset.addEventListener("click", () => resetApp());
+				remlist.forEach( (candidate) => {
+					let code='R'+candidate.cl;
+					cands[code]=0;
+					remframe.appendChild(genRemCandidate(candidate))
+				});
+				pcdlist.forEach( (candidate) => {
+					let code='D'+candidate.cl;
+					cands[code]=0;
+					pcdframe.appendChild(genPcdCandidate(candidate))
+				});
+				provlist.forEach( (candidate) => {
+					let code='P'+candidate.cl;
+					cands[code]=0;
+					provframe.appendChild(genProvCandidate(candidate))
+				});
+				genChoiceList();
+			}
+
+			function resetApp() {
+				chosen={};
+				cands={};
+				absord={};
+				ordcount=0;
+				choicecount=0;
+				remframe.innerHTML="";
+				pcdframe.innerHTML="";
+				provframe.innerHTML="";
+				genApp();
+			}
+		</script>
+	</body>
+</html>
+
